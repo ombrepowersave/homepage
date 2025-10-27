@@ -3,7 +3,8 @@ version: '3.8'
 services:
   web:
     build: .
-    container_name: company_website_web
+    image: homepage:latest
+    container_name: homepage_web
     ports:
-      - "80:5000"
+      - "61088:5000"
     restart: unless-stopped

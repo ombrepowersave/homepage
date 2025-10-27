@@ -1,6 +1,4 @@
-# 1. 使用一个轻量级的 Python 官方镜像作为基础
-# python:3.11-slim 是一个稳定且较小的选择
-FROM python:3.11-slim
+FROM python:3.12-slim
 
 # 2. 在容器内部设置一个工作目录
 WORKDIR /app
