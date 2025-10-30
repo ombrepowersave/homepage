@@ -1,0 +1,46 @@
+# 字节码和缓存文件
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Python 虚拟环境
+# 常见的虚拟环境目录名
+venv/
+.venv/
+env/
+.env/
+ENV/
+
+# 实例文件夹 (Flask 常用)
+# 用于存放不应提交的本地配置或密钥
+/instance/
+
+# 操作系统生成的文件
+.DS_Store
+Thumbs.db
+._*
+
+# 编辑器和 IDE 配置文件
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 依赖和构建产物
+/dist/
+/build/
+*.egg-info/
+/node_modules/
+
+# 敏感信息
+# 如果您使用 .env 文件存放环境变量
+.env
+*.env
+
+# 日志文件
+*.log
+
+# 测试和覆盖率报告
+.pytest_cache/
+.coverage
+htmlcov/

@@ -1,428 +1,475 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+{% extends "base.html" %} {% block title %}主页 - 我的网站{% endblock %} {%
+block content %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ombre - 能源管理软件</title>
-    <!-- 引入Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- 引入Inter字体 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
+<section
+  class="relative w-full h-screen flex flex-col justify-center items-center"
+  style="background-image: url('{{ url_for('static', filename='images/img_background image_home_1920_1080.png') }}'); background-size: cover; background-position: center;"
+>
 
-        /* 添加一些在参考网站上看到的微妙的渐变背景 */
-        .hero-bg {
-            background: linear-gradient(to bottom, rgba(243, 244, 246, 0.1), #ffffff 80%), url('https://placehold.co/1920x1080/003366/FFFFFF?text=Hero+Background+Image') no-repeat center center;
-            background-size: cover;
-        }
-
-        .section-bg {
-            background-color: #f9fafb;
-            /* 浅灰色背景 */
-        }
-    </style>
-</head>
-
-<body class="bg-white text-gray-800">
-
-    <!-- 1. 导航栏 -->
-    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- Logo -->
-            <a href="#" class="text-2xl font-bold text-gray-900">
-                <img src="https://placehold.co/150x40/004080/FFFFFF?text=LOGO" alt="公司Logo" class="h-8 w-auto">
+  <div class="container mx-auto px-6 text-center relative z-20">
+        
+        <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+            Say Goodbye To 
+            <span class="text-cyan-500">High Electricity</span><br>
+            Bills And 
+            <span class="text-gray-700">Power Outage Anxiety</span>
+        </h1>
+        
+        <p class="text-lg md:text-xl text-gray-700 font-medium max-w-2xl mx-auto">
+            AI Energy Management Solution
+        </p>
+        
+        <p class="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+            Average Annual Benefit Of 1200$ Per Family Served
+        </p>
+        
+        <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+            
+            <a href="#"
+                class="bg-gradient-to-r from-cyan-400 to-green-500 hover:from-cyan-500 hover:to-green-600 text-white font-medium py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 inline-flex items-center">
+                Estimate Earnings
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </a>
+            
+            <a href="#" class="transition duration-300 transform hover:scale-105">
+                <img src="https://placehold.co/160x54/000000/FFFFFF?text=App+Store+Button" alt="Download on the App Store" class="h-14 w-auto">
             </a>
 
-            <!-- 导航链接 (桌面) -->
-            <div class="hidden lg:flex items-center space-x-6">
-                <a href="#" class="text-gray-600 hover:text-gray-900">产品</a>
-                <a href="#" class="text-gray-900 font-semibold">软件</a>
-                <a href="#" class="text-gray-600 hover:text-gray-900">支持</a>
-                <a href="#" class="text-gray-600 hover:text-gray-900">公司</a>
-            </div>
+            <a href="#" class="transition duration-300 transform hover:scale-105">
+                <img src="https://placehold.co/180x54/000000/FFFFFF?text=Google+Play+Button" alt="Get it on Google Play" class="h-14 w-auto">
+            </a>
 
-            <!-- CTA 按钮 (桌面) -->
-            <div class="hidden lg:block">
-                <a href="#"
-                    class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-5 rounded-full shadow-md transition duration-300">
-                    联系我们
-                </a>
-            </div>
-
-            <!-- 移动端菜单按钮 -->
-            <div class="lg:hidden">
-                <button class="text-gray-900 focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16m-7 6h7"></path>
-                    </svg>
-                </button>
-            </div>
-        </nav>
-        <!-- 可以在此处添加移动端菜单（默认隐藏） -->
-    </header>
-
-    <main>
-        <!-- 2. Hero 区域 -->
-        <section class="hero-bg pt-24 pb-32 md:pt-32 md:pb-40">
-            <div class="container mx-auto px-6 text-center max-w-4xl">
-                <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                    Ombre能源管理软件
-                </h1>
-                <p class="text-lg md:text-xl text-gray-700 mb-10 max-w-2xl mx-auto">
-                    我们的解决方案是一个全宅能源管理系统，集成了太阳能、电池、电网和发电机。我们的软件生态系统通过一个应用程序无缝连接户主、安装商和合作伙伴。
-                </p>
-                <div>
-                    <a href="#"
-                        class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-full shadow-lg transition duration-300">
-                        了解更多
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3. 无缝集成 (Seamless Integration) -->
-        <section class="py-16 md:py-24 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
-                    <!-- 文字内容 -->
-                    <div class="lg:w-1/2">
-                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                            无缝集成
-                        </h2>
-                        <p class="text-lg text-gray-700 leading-relaxed">
-                            我们的软件平台旨在将能源管理的各个方面统一起来。从户主监控到安装商车队管理和合作伙伴支持，我们的生态系统确保所有用户都能获得流畅、互联的体验。
-                        </p>
-                    </div>
-                    <!-- 图片 -->
-                    <div class="lg:w-1/2">
-                        <img src="https://placehold.co/600x450/EBF8FF/004080?text=Seamless+Integration" alt="无缝集成示意图"
-                            class="rounded-lg shadow-xl w-full">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 4. App -->
-        <section class="py-16 md:py-24 section-bg">
-            <div class="container mx-auto px-6">
-                <div class="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-24">
-                    <!-- 文字和特性列表 -->
-                    <div class="lg:w-1/2">
-                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                            我们的 App
-                        </h2>
-                        <p class="text-lg text-gray-700 leading-relaxed mb-8">
-                            随时随地监控和控制您的能源。我们的应用程序让户主能够轻松管理他们的家庭能源使用、优化节省并为停电做好准备。
-                        </p>
-                        <!-- 特性列表 -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <!-- 特性 1 -->
-                            <div class="flex items-start space-x-4">
-                                <div
-                                    class="flex-shrink-0 w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-semibold text-gray-900">监控</h3>
-                                    <p class="text-gray-600">实时查看能源流和电池电量。</p>
-                                </div>
-                            </div>
-                            <!-- 特性 2 -->
-                            <div class="flex items-start space-x-4">
-                                <div
-                                    class="flex-shrink-0 w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
-                                        </path>
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-semibold text-gray-900">控制</h3>
-                                    <p class="text-gray-600">在备用、自耗或出售模式间切换。</p>
-                                </div>
-                            </div>
-                            <!-- 特性 3 -->
-                            <div class="flex items-start space-x-4">
-                                <div
-                                    class="flex-shrink-0 w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
-                                        </path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-semibold text-gray-900">调度</h3>
-                                    <p class="text-gray-600">根据使用时间费率安排电池充放电。</p>
-                                </div>
-                            </div>
-                            <!-- 特性 4 -->
-                            <div class="flex items-start space-x-4">
-                                <div
-                                    class="flex-shrink-0 w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z">
-                                        </path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-semibold text-gray-900">天气响应</h3>
-                                    <p class="text-gray-600">在恶劣天气来临前自动为电池充满电。</p>
-                                </div>
-                            </div>
-                            <!-- 特性 5 -->
-                            <div class="flex items-start space-x-4">
-                                <div
-                                    class="flex-shrink-0 w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2-1.343-2-3-2z"></path>
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M12 8V6m0 12v-2m-4-4H4m16 0h-2M7.05 7.05l-1.414-1.414M18.364 18.364l-1.414-1.414M7.05 16.95l-1.414 1.414M18.364 5.636l-1.414 1.414">
-                                        </path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-semibold text-gray-900">节省</h3>
-                                    <p class="text-gray-600">跟踪您的能源节省和系统表现。</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 图片 -->
-                    <div class="lg:w-1/2 flex justify-center">
-                        <img src="https://placehold.co/400x600/FFFFFF/004080?text=App+Screenshot" alt="App 截图"
-                            class="rounded-lg shadow-xl" style="max-height: 600px;">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 5. 安装商车队管理 -->
-        <section class="py-16 md:py-24 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
-                    <!-- 文字和特性列表 -->
-                    <div class="lg:w-1/2">
-                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                            安装商车队管理
-                        </h2>
-                        <p class="text-lg text-gray-700 leading-relaxed mb-8">
-                            远程管理和监控客户站点。我们的安装商门户简化了从调试到故障排除的整个工作流程，帮助您高效扩展业务。
-                        </p>
-                        <!-- 特性列表 -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <!-- 特性 1 -->
-                            <div class="flex items-start space-x-4">
-                                <div
-                                    class="flex-shrink-0 w-10 h-10 bg-green-100 text-green-600 rounded-full flex items-center justify-center">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-semibold text-gray-900">远程调试</h3>
-                                    <p class="text-gray-600">快速激活和配置新系统，无需上门。</p>
-                                </div>
-                            </div>
-                            <!-- 特性 2 -->
-                            <div class="flex items-start space-x-4">
-                                <div
-                                    class="flex-shrink-0 w-10 h-10 bg-green-100 text-green-600 rounded-full flex items-center justify-center">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M5 11v2m14-2v2">
-                                        </path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-semibold text-gray-900">站点管理</h3>
-                                    <p class="text-gray-600">在一个仪表板上查看所有客户站点的状态。</p>
-                                </div>
-                            </div>
-                            <!-- 特性 3 -->
-                            <div class="flex items-start space-x-4">
-                                <div
-                                    class="flex-shrink-0 w-10 h-10 bg-green-100 text-green-600 rounded-full flex items-center justify-center">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.536L15.232 5.232z">
-                                        </path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-semibold text-gray-900">远程控制</h3>
-                                    <p class="text-gray-600">远程调整客户系统设置和运行模式。</p>
-                                </div>
-                            </div>
-                            <!-- 特性 4 -->
-                            <div class="flex items-start space-x-4">
-                                <div
-                                    class="flex-shrink-0 w-10 h-10 bg-green-100 text-green-600 rounded-full flex items-center justify-center">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
-                                        </path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-semibold text-gray-900">故障排除</h3>
-                                    <p class="text-gray-600">接收警报并诊断问题，通常无需派遣技术人员。</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 图片 -->
-                    <div class="lg:w-1/2">
-                        <img src="https://placehold.co/600x450/F0FDF4/15803D?text=Installer+Dashboard" alt="安装商仪表板"
-                            class="rounded-lg shadow-xl w-full">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 6. 合作伙伴门户 (Partner Portal) -->
-        <section class="py-16 md:py-24 section-bg">
-            <div class="container mx-auto px-6">
-                <div class="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-24">
-                    <!-- 文字内容 -->
-                    <div class="lg:w-1/2">
-                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                            合作伙伴门户
-                        </h2>
-                        <p class="text-lg text-gray-700 leading-relaxed">
-                            为我们的分销商和合作伙伴提供成功所需的一切。合作伙伴门户提供对培训、营销材料、技术文档和专属支持的集中访问。
-                        </p>
-                    </div>
-                    <!-- 图片 -->
-                    <div class="lg:w-1/2">
-                        <img src="https://placehold.co/600x450/EFF6FF/1E40AF?text=Partner+Portal" alt="合作伙伴门户"
-                            class="rounded-lg shadow-xl w-full">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 7. CTA 区域 -->
-        <section class="py-16 md:py-24 bg-white">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                    准备好了解更多信息了吗？
-                </h2>
-                <p class="text-lg text-gray-700 mb-8 max-w-xl mx-auto">
-                    联系我们的团队，了解我们的能源管理解决方案如何为您的家庭或业务赋能。
-                </p>
-                <a href="#"
-                    class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-full shadow-lg transition duration-300">
-                    联系我们
-                </a>
-            </div>
-        </section>
-    </main>
-
-    <!-- 8. 页脚 -->
-    <footer class="bg-gray-900 text-gray-400 pt-16 pb-8">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
-                <!-- Logo 和简介 -->
-                <div class="col-span-2 lg:col-span-1">
-                    <img src="https://placehold.co/150x40/FFFFFF/1F2937?text=LOGO" alt="公司Logo" class="h-8 w-auto mb-4">
-                    <p class="text-sm">重新定义家庭能源管理。</p>
-                </div>
-
-                <!-- 链接组 1: 产品 -->
-                <div>
-                    <h5 class="font-semibold text-white mb-4">产品</h5>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-white">APP</a></li>
-                    </ul>
-                </div>
-
-                <!-- 链接组 2: 软件 -->
-                <div>
-                    <h5 class="font-semibold text-white mb-4">软件</h5>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-white">App</a></li>
-                    </ul>
-                </div>
-
-                <!-- 链接组 3: 公司 -->
-                <div>
-                    <h5 class="font-semibold text-white mb-4">公司</h5>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-white">关于我们</a></li>
-                        <li><a href="#" class="hover:text-white">加入我们</a></li>
-                    </ul>
-                </div>
-
-                <!-- 链接组 4: 支持 -->
-                <div>
-                    <h5 class="font-semibold text-white mb-4">支持</h5>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-white">联系我们</a></li>
-                        <li><a href="#" class="hover:text-white">资源中心</a></li>
-                        <li><a href="#" class="hover:text-white">常见问题</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <hr class="border-gray-700 my-8">
-
-            <!-- 底部版权和社交链接 -->
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <p class="text-sm">
-                    &copy; 2025 ombrepasadena.com 保留所有权利.
-                </p>
-                <!-- 社交图标 -->
-                <div class="flex space-x-4 mt-4 md:mt-0">
-                    <a href="#" aria-label="LinkedIn" class="hover:text-white">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                        </svg>
-                    </a>
-                    <a href="#" aria-label="Twitter" class="hover:text-white">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.565-.665 2.458 0 1.948 1.055 3.659 2.645 4.649-.966-.03-1.849-.297-2.638-.718v.065c0 2.723 1.942 4.994 4.512 5.511-.47.128-.97.196-1.484.196-.362 0-.713-.035-.1.03-1.052.868-2.529 1.336-4.111 1.336-.8 0-1.582-.046-2.35-.136 1.359 1.018 2.966 1.611 4.704 1.611 5.613 0 8.704-4.65 8.704-8.704 0-.132 0-.263-.008-.395a6.262 6.262 0 001.549-1.61z" />
-                        </svg>
-                    </a>
-                    <a href="#" aria-label="Facebook" class="hover:text-white">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
-                        </svg>
-                    </a>
-                </div>
-            </div>
         </div>
-    </footer>
 
-</body>
+    </div>
+</section>
 
-</html>
+
+
+<section class="py-16 md:py-24 bg-white relative overflow-hidden">
+  <div class="absolute inset-0 z-0 opacity-30">
+    <img
+      src="{{ url_for('static', filename='images/img_background image_roi_1920_1080.png') }}"
+      alt="Background"
+      class="w-full h-full object-cover"
+    />
+  </div>
+
+  <div class="container mx-auto px-6 max-w-4xl z-10 relative">
+    <span class="absolute top-1/4 left-1/4 text-4xl opacity-50 z-0">💰</span>
+    <span
+      class="absolute top-20 right-1/4 text-5xl opacity-40 z-0 transform rotate-12"
+      >🪙</span
+    >
+    <span
+      class="absolute bottom-1/4 left-1/3 text-3xl opacity-30 z-0 transform -rotate-12"
+      >💰</span
+    >
+
+    <div
+      class="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-gray-100"
+    >
+      <form action="#" method="POST">
+        <div class="text-center mb-10">
+          <span class="text-5xl" role="img" aria-label="Calculator">🧮</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-4">
+            Energy Calculator
+          </h2>
+          <p class="text-lg text-gray-600 mt-2">
+            Download The App For Estimated Benefits For Families
+          </p>
+        </div>
+
+        <div class="space-y-6">
+          <div>
+            <label
+              for="zip-code"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Where do you live?
+            </label>
+            <input
+              type="text"
+              name="zip-code"
+              id="zip-code"
+              placeholder="ZIP code"
+              class="w-full px-4 py-3 rounded-lg bg-gray-100 border-transparent focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition duration-300"
+            />
+          </div>
+
+          <div>
+            <label
+              for="devices"
+              class="block text-sm font-medium text-gray-700 mb-1"
+            >
+              What devices do you use?
+            </label>
+            <input
+              type="text"
+              name="devices"
+              id="devices"
+              placeholder="Devices (Enter your daily electricity consumption)"
+              class="w-full px-4 py-3 rounded-lg bg-gray-100 border-transparent focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition duration-300"
+            />
+          </div>
+
+          <div>
+            <input
+              type="text"
+              name="electric-car"
+              id="electric-car"
+              placeholder="Electric car (Enter your Daily Kilometers)"
+              class="w-full px-4 py-3 rounded-lg bg-gray-100 border-transparent focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition duration-300"
+            />
+          </div>
+
+          <div>
+            <input
+              type="text"
+              name="hvac"
+              id="hvac"
+              placeholder="HVAC (Enter your Daily Kilometers)"
+              class="w-full px-4 py-3 rounded-lg bg-gray-100 border-transparent focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition duration-300"
+            />
+          </div>
+        </div>
+
+        <div class="text-center mt-10">
+          <button
+            type="submit"
+            class="py-3 px-12 text-white font-bold rounded-full shadow-lg transition duration-300 transform hover:scale-105 bg-gradient-to-r from-cyan-400 to-green-500 hover:from-cyan-500 hover:to-green-600"
+          >
+            Estimate your earnings
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 md:py-24 bg-gray-50">
+  <div class="container mx-auto px-6 space-y-20">
+    <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+      <div class="lg:w-1/2">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          AI scheduling Electricity to help you save on electricity bills
+        </h2>
+        <ul class="space-y-4">
+          <li class="flex items-center">
+            <svg
+              class="w-5 h-5 text-blue-600 mr-3 flex-shrink-0"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span class="text-gray-700">Personalized energy management</span>
+          </li>
+          <li class="flex items-center">
+            <svg
+              class="w-5 h-5 text-blue-600 mr-3 flex-shrink-0"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span class="text-gray-700">Policy transparency</span>
+          </li>
+          <li class="flex items-center">
+            <svg
+              class="w-5 h-5 text-blue-600 mr-3 flex-shrink-0"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span class="text-gray-700">Emergency management</span>
+          </li>
+          <li class="flex items-center">
+            <svg
+              class="w-5 h-5 text-blue-600 mr-3 flex-shrink-0"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span class="text-gray-700">Cross-brand collaboration</span>
+          </li>
+        </ul>
+      </div>
+      <div class="lg:w-1/2">
+        <img
+          src="https://placehold.co/600x450/EBF8FF/004080?text=App+Analytics+Screenshot"
+          alt="AI Scheduling Analytics"
+          class="rounded-lg shadow-xl w-full"
+        />
+      </div>
+    </div>
+
+    <div
+      class="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-16"
+    >
+      <div class="lg:w-1/2">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          Power saving and schedulinglogic visualization
+        </h2>
+        <ul class="space-y-4">
+          <li class="flex items-center">
+            <svg
+              class="w-5 h-5 text-blue-600 mr-3 flex-shrink-0"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span class="text-gray-700">Personalized energy management</span>
+          </li>
+          <li class="flex items-center">
+            <svg
+              class="w-5 h-5 text-blue-600 mr-3 flex-shrink-0"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span class="text-gray-700">Policy transparency</span>
+          </li>
+          <li class="flex items-center">
+            <svg
+              class="w-5 h-5 text-blue-600 mr-3 flex-shrink-0"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span class="text-gray-700">Emergency management</span>
+          </li>
+          <li class="flex items-center">
+            <svg
+              class="w-5 h-5 text-blue-600 mr-3 flex-shrink-0"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span class="text-gray-700">Cross-brand collaboration</span>
+          </li>
+        </ul>
+      </div>
+      <div class="lg:w-1/2">
+        <img
+          src="https://placehold.co/600x450/F3F4F6/1F2937?text=Car+Charging+Visualization"
+          alt="Scheduling Visualization"
+          class="rounded-lg shadow-xl w-full"
+        />
+      </div>
+    </div>
+
+    <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+      <div class="lg:w-1/2">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          Push power outage warnings in advance and reserve emergency energy for
+          households
+        </h2>
+        <ul class="space-y-4">
+          <li class="flex items-center">
+            <svg
+              class="w-5 h-5 text-blue-600 mr-3 flex-shrink-0"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span class="text-gray-700">Personalized energy management</span>
+          </li>
+          <li class="flex items-center">
+            <svg
+              class="w-5 h-5 text-blue-600 mr-3 flex-shrink-0"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span class="text-gray-700">Policy transparency</span>
+          </li>
+          <li class="flex items-center">
+            <svg
+              class="w-5 h-5 text-blue-600 mr-3 flex-shrink-0"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span class="text-gray-700">Emergency management</span>
+          </li>
+          <li class="flex items-center">
+            <svg
+              class="w-5 h-5 text-blue-600 mr-3 flex-shrink-0"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span class="text-gray-700">Cross-brand collaboration</span>
+          </li>
+        </ul>
+      </div>
+      <div class="lg:w-1/2">
+        <img
+          src="https://placehold.co/600x450/374151/E5E7EB?text=Power+Outage+Warning"
+          alt="Power Outage Warning"
+          class="rounded-lg shadow-xl w-full"
+        />
+      </div>
+    </div>
+
+    <div
+      class="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-16"
+    >
+      <div class="lg:w-1/2">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          Support different brands of devices to collaborate, and will continue
+          to open more brands of devices
+        </h2>
+        <ul class="space-y-4">
+          <li class="flex items-center">
+            <svg
+              class="w-5 h-5 text-blue-600 mr-3 flex-shrink-0"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span class="text-gray-700">Personalized energy management</span>
+          </li>
+          <li class="flex items-center">
+            <svg
+              class="w-5 h-5 text-blue-600 mr-3 flex-shrink-0"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span class="text-gray-700">Policy transparency</span>
+          </li>
+          <li class="flex items-center">
+            <svg
+              class="w-5 h-5 text-blue-600 mr-3 flex-shrink-0"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span class="text-gray-700">Emergency management</span>
+          </li>
+          <li class="flex items-center">
+            <svg
+              class="w-5 h-5 text-blue-600 mr-3 flex-shrink-0"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span class="text-gray-700">Cross-brand collaboration</span>
+          </li>
+        </ul>
+      </div>
+      <div class="lg:w-1/2">
+        <img
+          src="https://placehold.co/600x450/1F2937/FFFFFF?text=Device+Brands+Collaboration"
+          alt="Device Collaboration"
+          class="rounded-lg shadow-xl w-full"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 md:py-24 bg-white">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900">功能或服务</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="border rounded-lg p-6 shadow-lg">
+        <h3 class="text-xl font-semibold mb-2">功能一</h3>
+        <p class="text-gray-600">功能一的描述文字。</p>
+      </div>
+      <div class="border rounded-lg p-6 shadow-lg">
+        <h3 class="text-xl font-semibold mb-2">功能二</h3>
+        <p class="text-gray-600">功能二的描述文字。</p>
+      </div>
+      <div class="border rounded-lg p-6 shadow-lg">
+        <h3 class="text-xl font-semibold mb-2">功能三</h3>
+        <p class="text-gray-600">功能三的描述文字。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %} {% block scripts %} {% endblock %}

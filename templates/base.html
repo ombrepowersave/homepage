@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>{% block title %}我的网站{% endblock %}</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+
+    {% block styles %}{% endblock %}
+</head>
+
+<body class="bg-white text-gray-800">
+
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            
+            <a href="/" class="text-xl font-bold text-gray-900">
+                Logo
+            </a>
+
+            <div class="hidden lg:flex items-center space-x-6">
+                <a href="/" class="text-gray-900 font-semibold">主页</a>
+                <a href="#" class="text-gray-600 hover:text-gray-900">关于</a>
+                <a href="#" class="text-gray-600 hover:text-gray-900">服务</a>
+            </div>
+
+            <div class="hidden lg:block">
+                <a href="#"
+                    class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-5 rounded-full shadow-md transition duration-300">
+                    联系我们
+                </a>
+            </div>
+
+            <div class="lg:hidden">
+                <button class="text-gray-900 focus:outline-none" id="mobile-menu-button">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        
+        <div class="lg:hidden hidden" id="mobile-menu">
+            <a href="/" class="block px-6 py-2 text-gray-900 font-semibold">主页</a>
+            <a href="#" class="block px-6 py-2 text-gray-600 hover:text-gray-900">关于</a>
+            <a href="#" class="block px-6 py-2 text-gray-600 hover:text-gray-900">服务</a>
+            <a href="#" class="block px-6 py-4">
+                <span class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-5 rounded-full shadow-md transition duration-300">
+                    联系我们
+                </span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400 pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                
+                <div>
+                    <h5 class="font-semibold text-white mb-4">栏目一</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white">链接 A</a></li>
+                        <li><a href="#" class="hover:text-white">链接 B</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="font-semibold text-white mb-4">栏目二</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white">链接 C</a></li>
+                        <li><a href="#" class="hover:text-white">链接 D</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5 class="font-semibold text-white mb-4">栏目三</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white">链接 E</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="font-semibold text-white mb-4">关注我们</h5>
+                    <div class="flex space-x-4">
+                        <a href="#" aria-label="社交媒体1" class="hover:text-white">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="社交媒体2" class="hover:text-white">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M3 3h18v18H3V3z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr class="border-gray-700 my-8">
+
+            <div class="text-center">
+                <p class="text-sm">
+                    &copy; 2025 您的公司名称. 保留所有权利.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的移动端菜单切换逻辑
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+    
+    {% block scripts %}{% endblock %}
+
+</body>
+
+</html>
